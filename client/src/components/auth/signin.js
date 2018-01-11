@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { signinUser } from '../../actions';
 
 class Signin extends Component {
   handleFormSubmit({ email, password }) {
     console.log(email, password);
+    this.props.signinUser({ email, password });
   }
 
-  renderField({ input, label, meta }) {
-    const { touched, error } = meta;
-    const className = `form-group ${touched && error ? 'has-danger' : ''}`;
-
+  renderField({ input, label }) {
     return (
       <div className="form-group">
         <label>{label}</label>
@@ -35,4 +35,4 @@ class Signin extends Component {
 
 export default reduxForm({
   form: 'signin',
-})(Signin);
+})(connect(null, { signinUser })(Signin));
