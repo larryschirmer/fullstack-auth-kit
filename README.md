@@ -28,4 +28,4 @@ This file is already added to the `.gitignore` file.
 
 The server makes requests to mongoDB on 27017. To build a new mongo database with docker run:
 
-`docker run --name mongo-auth-kit -it -d -p 27017:27017 mongo`
+`docker run --name mongo-auth-kit -it -d --mount source=mongo-auth-kit,target=/data/db -p 27017:27017 mongo`
